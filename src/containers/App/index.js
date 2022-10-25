@@ -10,13 +10,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const data = JSON.parse(window.localStorage.getItem("data"));
-        this.setState(data);
-        console.log(data);
+        const containerData = JSON.parse(window.localStorage.getItem("containerData"));
+        this.setState(containerData);
+        console.log(containerData);
     }
 
     componentDidUpdate() {
-        window.localStorage.setItem("data", JSON.stringify(this.state));
+        window.localStorage.setItem("containerData", JSON.stringify(this.state));
         console.log(this.state);
     }
 
@@ -42,7 +42,7 @@ class App extends Component {
     render() {
         return (
             <Routes>
-                <Route exact path="/" element={<Home />} />
+                <Route exact path="/" element={<Home add={this.add} remove={this.remove} />} />
             </Routes>
 
         );
