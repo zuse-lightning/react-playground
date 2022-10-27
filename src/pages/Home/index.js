@@ -5,7 +5,7 @@ import "./style.css";
 class Home extends Component {
     render() {
 
-        const { add, remove} = this.props;
+        const { add, remove } = this.props;
 
         return (
             <div>
