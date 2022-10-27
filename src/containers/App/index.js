@@ -26,15 +26,19 @@ class App extends Component {
         newElement.setAttribute("id", "new-element");
         newElement.innerHTML = "Added";
         container.appendChild(newElement);
-        this.state.containerArray.push("Added");
+        this.setState(prevState => ({
+            containerArray: [...prevState.containerArray, "new value"]
+          }));
         console.log("Added");
         console.log(this.state.containerArray);
     }
 
-    remove = () => {
+    remove = (index) => {
         let deletedElement = document.getElementById("new-element");
         deletedElement.remove();
-        this.state.containerArray.pop();
+        this.setState(prevState => ({
+            containerArray: [...prevState.containerArray.slice(0, index), ...prevState.containerArray.slice(index + 1)]
+        }));
         console.log("Removed");
         console.log(this.state.containerArray);
     }
