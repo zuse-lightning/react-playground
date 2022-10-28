@@ -6,7 +6,7 @@ import './style.css';
 class App extends Component {
 
     state = {
-        containerArray: []
+        containerArray: ["Added", "Added", "Added"]
     }
 
     componentDidMount() {
@@ -26,9 +26,12 @@ class App extends Component {
         newElement.setAttribute("id", "new-element");
         newElement.innerHTML = "Added";
         container.appendChild(newElement);
-        this.setState(prevState => ({
-            containerArray: [...prevState.containerArray, "new value"]
-          }));
+        this.setState(state => {
+            const containerArray = [...state.containerArray, "Added"];
+            return {
+                containerArray,
+            };
+        });
         console.log("Added");
         console.log(this.state.containerArray);
     }
