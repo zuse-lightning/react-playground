@@ -6,7 +6,7 @@ import './style.css';
 class App extends Component {
 
     state = {
-        containerArray: ["Added", "Added", "Added"]
+        containerArray: []
     }
 
     componentDidMount() {
@@ -21,27 +21,23 @@ class App extends Component {
     }
 
     add = () => {
-        const container = document.getElementById("container");
-        let newElement = document.createElement("div");
-        newElement.setAttribute("id", "new-element");
-        newElement.innerHTML = "Added";
-        container.appendChild(newElement);
         this.setState(state => {
             const containerArray = [...state.containerArray, "Added"];
             return {
-                containerArray,
+                containerArray
             };
         });
         console.log("Added");
         console.log(this.state.containerArray);
     }
 
-    remove = (index) => {
-        let deletedElement = document.getElementById("new-element");
-        deletedElement.remove();
-        this.setState(prevState => ({
-            containerArray: [...prevState.containerArray.slice(0, index), ...prevState.containerArray.slice(index + 1)]
-        }));
+    remove = () => {
+        this.setState(state => {
+            const [first, ...rest] = state.containerArray;
+            return {
+                containerArray: rest
+            };
+        });
         console.log("Removed");
         console.log(this.state.containerArray);
     }
@@ -49,7 +45,7 @@ class App extends Component {
     render() {
         return (
             <Routes>
-                <Route exact path="/" element={<Home add={this.add} remove={this.remove} />} />
+                <Route exact path="/" element={<Home add={this.add} remove={this.remove} containerArray={this.state.containerArray} />} />
             </Routes>
 
         );
