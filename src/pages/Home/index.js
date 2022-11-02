@@ -12,7 +12,7 @@ class Home extends Component {
                 <h1 id="test-heading">Test Heading</h1>
                 <div id="container">
                     {containerArray.map(element => (
-                        <div key={element}>{element}</div>
+                        <div key={element.id}>{element.status}</div>
                     ))}
                 </div>
                 <Buttons add={add} remove={remove} />
