@@ -1,15 +1,20 @@
 #add,
-  #remove {
-    width: 100px;
-    height: 50px;
-    color: white;
-    margin: 0 10px;
-  }
-  
-  #add {
-    background-color: green;
-  }
-  
-  #remove {
-    background-color: red;
-  }
+#remove,
+#reset {
+  width: 100px;
+  height: 50px;
+  color: white;
+  margin: 0 10px;
+}
+
+#add {
+  background-color: green;
+}
+
+#remove {
+  background-color: red;
+}
+
+#reset {
+  background-color: blue;
+}

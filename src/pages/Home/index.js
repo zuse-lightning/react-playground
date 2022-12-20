@@ -5,7 +5,7 @@ import "./style.css";
 class Home extends Component {
     render() {
 
-        const { add, remove, containerArray } = this.props;
+        const { add, remove, reset, containerArray } = this.props;
 
         return (
             <div>
@@ -15,7 +15,7 @@ class Home extends Component {
                         <div key={element.id}>{element.status}</div>
                     ))}
                 </div>
-                <Buttons add={add} remove={remove} />
+                <Buttons add={add} remove={remove} reset={reset} />
             </div>
         );
     }

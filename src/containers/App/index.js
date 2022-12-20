@@ -1,4 +1,4 @@
-import { toBeInTheDOM } from "@testing-library/jest-dom/dist/matchers";
+
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home";
@@ -8,7 +8,7 @@ class App extends Component {
 
     state = {
         containerArray: [],
-        counter: 0
+        // counter: 0
     }
 
     componentDidMount() {
@@ -22,34 +22,39 @@ class App extends Component {
 
     add = () => {
         this.setState(state => {
-            const containerArray = [...state.containerArray, { id: this.state.counter + 1 , status: "Added" }];
+            const containerArray = [...state.containerArray, { status: "Added" }];
             return {
                 containerArray
             };
         });
-        this.state.counter += 1;
+        this.setState({ counter: this.state.counter + 1 })
         console.log("Added");
         console.log(this.state.containerArray);
-        console.log(this.state.counter);
+        // console.log(this.state.counter);
     }
 
-    remove = () => {
+    remove = (id) => {
         this.setState(state => {
-            const containerArray = state.containerArray.filter(item => item.id !== id);
+            const containerArray = [state.containerArray.pop()];
             return {
                 containerArray
             };
         });
-        this.state.counter -= 1;
         console.log("Removed");
         console.log(this.state.containerArray);
-        console.log(this.state.counter);
+        // console.log(this.state.counter);
+    }
+
+    reset = () => {
+        this.setState({ containerArray: [] });
+        console.log(this.state.containerArray);
+        // console.log(this.state.counter);
     }
 
     render() {
         return (
             <Routes>
-                <Route exact path="/" element={<Home add={this.add} remove={this.remove} containerArray={this.state.containerArray} />} />
+                <Route exact path="/" element={<Home add={this.add} remove={this.remove} reset={this.reset} containerArray={this.state.containerArray} />} />
             </Routes>
 
         );
