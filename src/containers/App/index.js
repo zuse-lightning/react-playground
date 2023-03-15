@@ -7,7 +7,7 @@ import './style.css';
 class App extends Component {
 
     state = {
-        containerArray: [],
+        containerArray: []
     }
 
     componentDidMount() {
